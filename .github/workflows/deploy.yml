@@ -1,0 +1,23 @@
+name: Docker Compose Up
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  up:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: MrSquaare/ssh-setup-action@v2 # v2.0.1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          username: ${{ secrets.SSH_USER }}
+
+      - run: docker compose up --build -d
+        env:
+          DOCKER_HOST: 'ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}'
