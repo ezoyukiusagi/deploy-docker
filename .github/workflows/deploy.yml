@@ -1,8 +1,6 @@
 name: Docker Compose Up
 
 on:
-  push:
-    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
