@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: MrSquaare/ssh-setup-action@v2 # v2.0.1
+      - uses: MrSquaare/ssh-setup-action@v2.0.1 # v2.0.1
         with:
           host: ${{ secrets.SSH_HOST }}
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
